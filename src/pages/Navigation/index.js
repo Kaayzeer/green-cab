@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import { FiMoreHorizontal, FiSearch, FiUser, FiSun, FiMoon } from 'react-icons/fi';
+import { FiSearch, FiUser, FiSun, FiMoon } from 'react-icons/fi';
 import {
     BrowserRouter as Router,
     Link,
     useHistory
   } from "react-router-dom";
-  import {useAuth} from '../../constants/firebase'
 
-const NavStyle = styled.div`
+
+const NavStyle = styled.nav`
 width: 100%;
 height: 10vh; 
 display: flex;
@@ -16,9 +16,8 @@ flex-direction: row;
 position: absolute;
 bottom: 0;
 left: 0;
-background-color: #4D8C2D;
-border-top-left-radius: 1rem;
-border-top-right-radius: 1rem;
+border-top-left-radius: 1.6rem;
+border-top-right-radius: 1.6rem;
 
  > ul {
     width: 100%;
@@ -45,52 +44,48 @@ border-top-right-radius: 1rem;
 } 
 `
 
-const ToggleStyle = styled.div`
-    border: 1px solid #BFD2B5;
-    font-size: 1.4rem;
+const ToggleStyle = styled.aside`
+    border: 1px solid #adc178;
+    font-size: 1.6rem;
     padding: 0.4rem;
     padding-bottom: .1rem; 
     border-radius: .5rem;
-    background-color: #256605;
+    /* background-color: #4D8C2D; */
     
+    
+    :hover{
+        background-color: #55a630;
+        opacity: 0.8;
+    }
+
+    :active{
+
+    }
 `
 
-function Index({themetoggler, theme}) {
+function Index({themetoggler, theme, }) {
 
         const history = useHistory()
 
-        const {user, logout} = useAuth()
+        const style = { color: "#F7F9F8"}
 
     return (  
        
         <Router>
         <NavStyle>
             <ul>
-                {user && (
-                    <>
+               
                     <li>
-                    <Link to="/"><FiUser onClick={() => history.push("/landing")}/></Link>
+                    <Link to="/login"><FiUser onClick={() => history.push("/login")}/></Link>
                     </li>
-                    <button>
-                        Logout
-                    </button>
-                    </>
-                )}
-
-                {!user && (
-                    <>
-                    <li>
-                    <Link to="/"><FiUser onClick={() => history.push("/landing")}/></Link>
-                    </li>
-                    </>
-                )}
+                  
                 
                 <li>
                 <Link to="/search"><FiSearch onClick={() => history.push("/search")}/></Link>
                 </li>
                 
                <ToggleStyle>
-               {theme === 'light' ? <FiMoon onClick={() => themetoggler()}/> : <FiSun onClick={() => themetoggler()} />}
+               {theme === 'light' ? <FiMoon onClick={() => themetoggler()}/> : <FiSun style={style} onClick={() => themetoggler()}  />}
                </ToggleStyle>
             </ul>
         </NavStyle>

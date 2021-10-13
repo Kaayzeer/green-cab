@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
+import CarButton from '../../../components/CenterButton'
+/* import Map from '../../../components/Map' */
 
 const SearchContainer = styled.form`
     display: flex; 
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 40vh;
-    /* width: 100vw; */
-    /* margin: 10px 0px; */
+    height: 35%;
 
     > input {
         display: inline;
@@ -31,18 +31,20 @@ const ButtonContainer = styled.div`
 
     > button {
         width: 5rem;
-        height: 1.6rem;
+        height: 2rem;
         border: none;
         border-radius: 1rem;
-        color: #dee2e6;
-        letter-spacing: 0.03rem;
-
-      
+        letter-spacing: 0.1rem; 
+        box-shadow: 1px 1px 1px 1px #d1d4cb;
         
     }
 `
 
-function index() {
+
+
+function index(props) {
+
+  
     return (
         <>
         <SearchContainer>
@@ -55,7 +57,11 @@ function index() {
             <button>Avgång</button>
             <button>Ankomst</button>
         </ButtonContainer>
+        {/* <Map /> */}
+        <CarButton label='Välj bil'/>
         </>
+
+        
     )
 }
 

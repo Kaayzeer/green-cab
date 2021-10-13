@@ -4,9 +4,11 @@ export const lightTheme = {
     body: '#F7F9F8',
     li: '#081c15',
     a: '#081c15',
-    button: /* '#8CC96D' */'#478E23',/* linearGradient('90deg, #8CC96D, #478E23') */
+    h1: '#081c15',
+    button: ['#766153','#081c15', 'linear-gradient(180deg, #adc178, #dde5b6)'],
     input: '#e5e5e5',
     label: '#F7F9F8',
+    nav: ['#766153', '#adc178']
     
 }
 
@@ -14,10 +16,12 @@ export const darkTheme = {
     body: '#081c15',
     li: '#F7F9F8',
     a: '#F7F9F8',
+    h1: '#F7F9F8',
     p: '#F7F9F8',
-    button: '#478E23',/* linearGradient('90deg, #74c69d, #2d6a4f') */
+    button: ['#478E23','#dee2e6'],
     input: '#F7F9F8',
     label: '#F7F9F8',
+    nav: ['#1f2421', '#adc178']
 }
 
 export const GlobalStyles = createGlobalStyle`
@@ -37,6 +41,11 @@ export const GlobalStyles = createGlobalStyle`
 
     body {
         background-color: ${props => props.theme.body};
+    }
+
+    nav {
+        background-color: ${props => props.theme.nav[0]};
+        border: ${props => props.theme.nav[1]};
     }
     li {
         color: ${props => props.theme.li};
@@ -60,6 +69,10 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     button {
-        background-color: ${props => props.theme.button}
+        background-color: ${props => props.theme.button[0]};
+        color: ${props => props.theme.button[1]};
+        background-image: ${props => props.theme.button[2]};
+        /* box-shadow: ${props => props.theme.button[3]} */
     }
+
 `

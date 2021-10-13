@@ -3,9 +3,9 @@ import {
   BrowserRouter as Router,
 } from "react-router-dom";
 
-import Main from './components/Main/Main.js'
-import Navigation from './components/Navigation'
-import Footer from './components/Footer'
+import Main from './pages/Main/Main.js'
+import Navigation from './pages/Navigation'
+import Footer from './pages/Footer'
 import styled, {ThemeProvider} from 'styled-components'
 import {lightTheme, darkTheme, GlobalStyles} from './themes'
 

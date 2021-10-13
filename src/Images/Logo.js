@@ -3,9 +3,9 @@ import LandingImage from './greencablogo.svg'
 
 function Logo() {
     return (
-        <div>
-            <img src={LandingImage}></img>
-        </div>
+        <>
+            <img src={LandingImage} alt=''></img>
+        </>
     )
 }
 
