@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {
   BrowserRouter as Router,
 } from "react-router-dom";
-
+import 'mapbox-gl/dist/mapbox-gl.css';
 import Main from './pages/Main/Main.js'
 import Navigation from './pages/Navigation'
 import Footer from './pages/Footer'

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import CarButton from '../../../components/CenterButton'
-/* import Map from '../../../components/Map' */
+import Map from '../../../components/Map'
 
 const SearchContainer = styled.form`
     display: flex; 
@@ -57,7 +57,7 @@ function index(props) {
             <button>Avgång</button>
             <button>Ankomst</button>
         </ButtonContainer>
-        {/* <Map /> */}
+        <Map />
         <CarButton label='Välj bil'/>
         </>
 
