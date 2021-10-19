@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import CarButton from '../../../components/CenterButton'
 import Map from '../../../components/Map'
+import RadioGroup from '../../../components/RadioGroupSearch'
 
 const SearchContainer = styled.form`
     display: flex; 
@@ -21,29 +22,18 @@ const SearchContainer = styled.form`
 
     > p {
         margin: 2rem;
-    }
-`
-const ButtonContainer = styled.div`
-    display: flex; 
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-
-    > button {
-        width: 5rem;
-        height: 2rem;
-        border: none;
-        border-radius: 1rem;
-        letter-spacing: 0.1rem; 
-        box-shadow: 1px 1px 1px 1px #d1d4cb;
-        
+        font-family: 'roboto';
     }
 `
 
 
+function index() {
 
-function index(props) {
-
+  const radioButtons = [
+    { name: "Åka nu", value: "goNow", default: true },
+    { name: "Avgång", value: "departure" },
+    { name: "Ankomst", value: "arrival" },
+  ];
   
     return (
         <>
@@ -52,13 +42,14 @@ function index(props) {
           <input type='text' placeholder='Till' />
             <p>När vill du åka?</p>
         </SearchContainer>
-        <ButtonContainer>
-            <button>Åka nu</button>
-            <button>Avgång</button>
-            <button>Ankomst</button>
-        </ButtonContainer>
-        <Map />
-        <CarButton label='Välj bil'/>
+
+        
+            <RadioGroup options={radioButtons}/>
+       
+
+        {/* <Map />
+        <CarButton label='Välj bil'/> */}
+        
         </>
 
         

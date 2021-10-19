@@ -18,6 +18,7 @@ bottom: 0;
 left: 0;
 border-top-left-radius: 1.6rem;
 border-top-right-radius: 1.6rem;
+border: 3px solid #081c15;
 
  > ul {
     width: 100%;

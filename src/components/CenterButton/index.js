@@ -20,7 +20,7 @@ const CarButtonContainer = styled.div`
         letter-spacing: 1px;
         font-size: 1rem;
         border: none;
-        box-shadow: 2px 2px 2px 1px #d1d4cb;
+        /* box-shadow: 2px 2px 2px 1px #d1d4cb; */
         text-decoration: none!important;
 
         
