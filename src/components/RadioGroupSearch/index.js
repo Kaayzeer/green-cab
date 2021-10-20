@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import DatePicker from '../DatePicker'
+
 
 const RadioContainer = styled.form`
     position: relative;
@@ -53,6 +55,8 @@ const RadioContainer = styled.form`
 
 const Buttons = ({radioButtons}) => {
 
+    
+
   console.log()
 
   const [selected, setSelected] = useState(true);
@@ -61,6 +65,9 @@ const Buttons = ({radioButtons}) => {
   const handleChange = (e) => {
     setSelected(e.target.value === selected);
     console.log(e.target.value);
+   /*  if(setSelected(e.target.value === selected)){
+        setSelected(startDate)
+    } */
   };
 
   const delAvWidth = 100 / radioButtons.length
@@ -69,8 +76,11 @@ const Buttons = ({radioButtons}) => {
       width: `calc(${delAvWidth} * 1%)`,
       left: !defaultValue ? '0' : `calc(${delAvWidth} * ${defaultValue} * 1%)`,
   }
+
+
   
   return (
+      <>
     <RadioContainer onChange={handleChange}>
       {radioButtons.map((button, index) => (
         <label key={button.name} htmlFor={button.value} onChange={() => setDefaultValue(index)}>
@@ -85,8 +95,13 @@ const Buttons = ({radioButtons}) => {
           {button.name}
         </label>
       ))}
+      
       <button style={style}></button>
+      
     </RadioContainer>
+    <DatePicker />
+    
+    </>
   );
 };
 

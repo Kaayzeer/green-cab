@@ -4,6 +4,7 @@ import CarButton from '../../../components/CenterButton'
 import Map from '../../../components/Map'
 import RadioGroup from '../../../components/RadioGroupSearch'
 
+
 const SearchContainer = styled.form`
     display: flex; 
     flex-direction: column;
