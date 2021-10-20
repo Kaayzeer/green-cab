@@ -33,9 +33,9 @@ const RadioContainer = styled.form`
     
   }
 
-  input:checked {
+  /* input:checked {
     visibility: hidden;
-  }
+  } */
 
   button {
     position: absolute;
@@ -53,17 +53,39 @@ const RadioContainer = styled.form`
 
 `;
 
+const DateContainer = styled.div`
+    position: absolute;
+    top: 50px;
+    left: 50;
+    z-index: 10;
+
+`
+
 const Buttons = ({radioButtons}) => {
+
+    const [startDate, setStartDate] = useState(new Date());
+    const [isOpen, setIsOpen] = useState(false);
+
+
+    const handleToggle = (e) => {
+      setIsOpen(!isOpen)
+      setStartDate(e);
+    };
+    const handleClick = () => {
+      /* e.preventDefault(); */
+      setIsOpen(!isOpen);
+    };
 
     
 
-  console.log()
 
   const [selected, setSelected] = useState(true);
   const [defaultValue, setDefaultValue] = useState(0);
 
   const handleChange = (e) => {
     setSelected(e.target.value === selected);
+    handleToggle()
+    handleClick()
     console.log(e.target.value);
    /*  if(setSelected(e.target.value === selected)){
         setSelected(startDate)
@@ -77,13 +99,14 @@ const Buttons = ({radioButtons}) => {
       left: !defaultValue ? '0' : `calc(${delAvWidth} * ${defaultValue} * 1%)`,
   }
 
-
   
   return (
       <>
     <RadioContainer onChange={handleChange}>
       {radioButtons.map((button, index) => (
+
         <label key={button.name} htmlFor={button.value} onChange={() => setDefaultValue(index)}>
+          
           <input
             key={button.value}
             type="radio"
@@ -92,14 +115,26 @@ const Buttons = ({radioButtons}) => {
             name="options"
             defaultChecked={button.default}
           />
+          
+          
           {button.name}
+         
         </label>
+
       ))}
       
-      <button style={style}></button>
+      {/* <button style={style}></button> */}
+      <button style={style} >
+        
+        </button>
+        {isOpen && (
+        <DateContainer>
+          <DatePicker selected={startDate} onChange={handleToggle} inline />
+          </DateContainer>
+        )}
       
     </RadioContainer>
-    <DatePicker />
+    
     
     </>
   );

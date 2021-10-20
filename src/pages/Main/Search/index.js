@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import CarButton from '../../../components/CenterButton'
 import Map from '../../../components/Map'
 import RadioGroup from '../../../components/RadioGroupSearch'
+import Datepick from '../../../components/DatePicker'
 
 
 const SearchContainer = styled.form`
@@ -46,10 +47,11 @@ function index() {
 
         
             <RadioGroup options={radioButtons}/>
-       
 
-        {/* <Map />
-        <CarButton label='Välj bil'/> */}
+            {/* <Datepick /> */}
+
+        <Map />
+        <CarButton label='Välj bil'/>
         
         </>
 
