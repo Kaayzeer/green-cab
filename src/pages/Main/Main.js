@@ -14,7 +14,7 @@ function Main() {
         <div>
             
             <Switch>
-            <Route path="/login">
+            <Route path="/cars">
             <Cars />
           </Route>
           <Route path="/search">

@@ -14,7 +14,7 @@ const LandingStyle = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80vh;
+    height: 90vh;
     
     
 `
@@ -24,7 +24,7 @@ const UlContainer = styled.div `
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    height: 25vh;
+    height: 50vh;
 
     > ul {
     padding: 0 1.4rem;
@@ -65,21 +65,15 @@ const NavLink = styled(Link)`
   
 `
 
-
-
-
 function Index() {
 
     const history = useHistory()
 
-
-
-
     return (
-        
+        <>
     <LandingStyle>
      <LandingImage/>
-        
+         
      <UlContainer>
                  
                     <p>
@@ -97,7 +91,7 @@ function Index() {
                
                     
     </LandingStyle>
-    
+    </>
     )
 }
 
