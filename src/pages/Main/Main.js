@@ -1,35 +1,25 @@
+import { Switch, Route } from "react-router-dom";
 
-import {
-    Switch,
-    Route,
-  } from "react-router-dom";
-
-import Landing from './Landing'
-import Search from './Search'
-import Cars from './About'
+import Landing from "./Landing";
+import Search from "./Search";
+import Cars from "./Cars";
 
 function Main() {
-
-    return (
-        <div>
-            
-            <Switch>
-            <Route path="/cars">
-            <Cars />
-          </Route>
-          <Route path="/search">
+  return (
+    <>
+      <Switch>
+        <Route path="/cars">
+          <Cars />
+        </Route>
+        <Route path="/search">
           <Search />
-          </Route>
-          <Route path="/">
+        </Route>
+        <Route path="/">
           <Landing />
-          </Route>
-            
-            
-            </Switch>
-        </div>
-    )
+        </Route>
+      </Switch>
+    </>
+  );
 }
 
-export default Main
-
-
+export default Main;

@@ -15,35 +15,42 @@ const MapContainer = styled.section`
   margin-top: 1.4rem;
 `;
 
-function Index() {
+function Index({ fromInput, toInput }) {
   const [center, setCenter] = useState({});
-  const [position, setPosition] = useState();
-  const [destination, setDestination] = useState(null);
+  const [position, setPosition] = useState(center); //fetch urlPlaces för att få fromInput coords och sen setPosition(coords som)
+  const [destination, setDestination] = useState(/*coords till toInput*/); //fetch urlPlaces för att få toInput coords och sen setDestination(coords)
 
-  console.log(center);
-  console.log("position:", position);
+  // const [chooseInput, setChooseInput] = useState(); // särkiljer mellan from och to koordinaterna
+
+  const fetchType = {};
+
+  // function fetchData(url, setState) {
+  //   fetch(url)
+  //     .then((response) => response.json())
+  //     .then((data) => setState(data));
+
+  // if (urlPlaces.places == fromInput) {
+  //   setChooseInput(fromInput);
+  // } else setChooseInput(toInput);
+  // }
 
   /*  `https://api.mapbox.com/geocoding/v5/mapbox.places/${position}.json?country=se&proximity=-73.990593%2C40.740121&language=sv&autocomplete=true&routing=true&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}` */
-
   /* `https://api.mapbox.com/geocoding/v5/mapbox.places/${position}.json?limit=5&autocomplete=true&fuzzyMatch=true&routing=true&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}` */
 
-  const urlPlaces = `https://api.mapbox.com/geocoding/v5/mapbox.places/${position}.json?limit=5&autocomplete=true&fuzzyMatch=true&routing=true&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`;
+  const urlPosition = `https://api.mapbox.com/geocoding/v5/mapbox.places/${fromInput}.json?limit=5&autocomplete=true&fuzzyMatch=true&routing=true&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`;
+  const urlDestination = `https://api.mapbox.com/geocoding/v5/mapbox.places/${toInput}.json?limit=5&autocomplete=true&fuzzyMatch=true&routing=true&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`;
 
-  const url =
-    "https://api.mapbox.com/directions/v5/mapbox/cycling/-84.518641,39.134270;-84.512023,39.102779?geometries=geojson&access_token=pk.eyJ1IjoiZG9tY29iYiIsImEiOiJja3Vwd2JrYWIwYzFnMnZxdjA3eTQxaTJxIn0.OIBLSPYrEf16vRPjVV_e4A";
+  const urlRoute = `https://api.mapbox.com/directions/v5/mapbox/driving/${position};${destination}?geometries=geojson&access_token=pk.eyJ1IjoiZG9tY29iYiIsImEiOiJja3Vwd2JrYWIwYzFnMnZxdjA3eTQxaTJxIn0.OIBLSPYrEf16vRPjVV_e4A`;
 
-  useEffect(() => {
-    fetch(urlPlaces)
-      .then((response) => response.json())
-      .then((data) => setPosition(data));
-  }, []);
+  // useEffect(() => {
+  //   if (fromInput >= 3) fetchData(urlPosition, setPosition);
+  //   fetchData(urlPosition, setDestination);
+  // }, [fromInput, toInput]);
 
   let [viewport, setViewport] = useState({
     longitude: 18.01953943483295,
     latitude: 59.52077559363087,
     zoom: 8,
-    width: window.innerWidth,
-    height: window.innerHeight,
     pitch: 10,
   });
 
@@ -65,7 +72,7 @@ function Index() {
   // const [showPopup, togglePopup] = React.useState(false);
 
   return (
-    <MapContainer setPosition={setPosition} setDestination={setDestination}>
+    <MapContainer>
       <ReactMapGL
         {...viewport}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
@@ -74,19 +81,8 @@ function Index() {
         }}
         mapStyle={"mapbox://styles/domcobb/ckuqmsu8c5gku17o78a6gnmiq"}
         width="100vw"
-        height="35vh"
+        height="25vh"
       >
-        {cars.map((car, i) => (
-          <Marker
-            key={i}
-            latitude={car.pos.latitude}
-            longitude={car.pos.longitude}
-            /* offsetLeft={-20} */ offsetTop={-10}
-          >
-            <AiOutlineCar style={style} />
-          </Marker>
-        ))}
-
         <GeolocateControl
           style={geolocateControlStyle}
           positionOptions={{ enableHighAccuracy: true }}

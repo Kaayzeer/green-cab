@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import DatePicker from "react-datepicker";
+import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import sv from "date-fns/locale/sv";
 
 const RadioContainer = styled.form`
   position: relative;
@@ -80,6 +81,8 @@ const Buttons = ({ radioButtons }) => {
     left: !defaultValue ? "0" : `calc(${delAvWidth} * ${defaultValue} * 1%)`,
   };
 
+  registerLocale("sv", sv);
+
   return (
     <>
       <RadioContainer onChange={handleChange}>
@@ -107,7 +110,7 @@ const Buttons = ({ radioButtons }) => {
         <DatePicker
           selected={startDate}
           onChange={(date) => setStartDate(date)}
-          // locale="pt-BR"
+          locale="sv"
           showTimeSelect
           timeFormat="p"
           timeIntervals={15}
