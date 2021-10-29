@@ -7,6 +7,7 @@ import ReactMapGL, {
 import styled from "styled-components";
 import { AiOutlineCar } from "react-icons/ai";
 import { cars } from "../../data";
+import { getDynamicPosition } from "react-map-gl/src/utils/dynamic-position";
 
 const MapContainer = styled.section`
   display: flex;
@@ -15,37 +16,12 @@ const MapContainer = styled.section`
   margin-top: 1.4rem;
 `;
 
-function Index({ fromInput, toInput }) {
+function Index({ fromInput, toInput, currentFrom, currentTo }) {
   const [center, setCenter] = useState({});
   const [position, setPosition] = useState(center); //fetch urlPlaces för att få fromInput coords och sen setPosition(coords som)
   const [destination, setDestination] = useState(/*coords till toInput*/); //fetch urlPlaces för att få toInput coords och sen setDestination(coords)
 
-  // const [chooseInput, setChooseInput] = useState(); // särkiljer mellan from och to koordinaterna
-
-  const fetchType = {};
-
-  // function fetchData(url, setState) {
-  //   fetch(url)
-  //     .then((response) => response.json())
-  //     .then((data) => setState(data));
-
-  // if (urlPlaces.places == fromInput) {
-  //   setChooseInput(fromInput);
-  // } else setChooseInput(toInput);
-  // }
-
-  /*  `https://api.mapbox.com/geocoding/v5/mapbox.places/${position}.json?country=se&proximity=-73.990593%2C40.740121&language=sv&autocomplete=true&routing=true&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}` */
-  /* `https://api.mapbox.com/geocoding/v5/mapbox.places/${position}.json?limit=5&autocomplete=true&fuzzyMatch=true&routing=true&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}` */
-
-  const urlPosition = `https://api.mapbox.com/geocoding/v5/mapbox.places/${fromInput}.json?limit=5&autocomplete=true&fuzzyMatch=true&routing=true&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`;
-  const urlDestination = `https://api.mapbox.com/geocoding/v5/mapbox.places/${toInput}.json?limit=5&autocomplete=true&fuzzyMatch=true&routing=true&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`;
-
-  const urlRoute = `https://api.mapbox.com/directions/v5/mapbox/driving/${position};${destination}?geometries=geojson&access_token=pk.eyJ1IjoiZG9tY29iYiIsImEiOiJja3Vwd2JrYWIwYzFnMnZxdjA3eTQxaTJxIn0.OIBLSPYrEf16vRPjVV_e4A`;
-
-  // useEffect(() => {
-  //   if (fromInput >= 3) fetchData(urlPosition, setPosition);
-  //   fetchData(urlPosition, setDestination);
-  // }, [fromInput, toInput]);
+  console.log(`currentFrom: ${currentFrom}`, `currentTo : ${currentTo}`);
 
   let [viewport, setViewport] = useState({
     longitude: 18.01953943483295,
@@ -88,9 +64,10 @@ function Index({ fromInput, toInput }) {
           positionOptions={{ enableHighAccuracy: true }}
           trackUserLocation={true}
           auto
-          onGeolocate={(pos) =>
-            setCenter({ lat: pos.coords.latitude, lon: pos.coords.longitude })
-          }
+          onGeolocate={(pos) => {
+            setCenter({ lat: pos.coords.latitude, lon: pos.coords.longitude });
+            /* currentTo, currentFrom */
+          }}
         />
 
         <FullscreenControl style={fullscreenControlStyle} />

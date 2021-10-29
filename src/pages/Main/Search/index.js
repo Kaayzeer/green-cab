@@ -11,7 +11,6 @@ const SearchContainer = styled.form`
   justify-content: center;
   align-items: center;
   height: 35%;
-  position: relative;
 
   > input {
     flex: 0.1;
@@ -71,28 +70,24 @@ function Index() {
   const [apiQueryToToInput, setApiQueryToToInput] = useState([]); // Array fetched from api by the "to input-field"
   const [fromInput, setFromInput] = useState("");
   const [toInput, setToInput] = useState("");
-  const [geometryFrom, setGeometryFrom] = useState(null);
-  const [geometryTo, setGeometryTo] = useState(null);
-  const [addressAndCoordinates, setAddressAndCoordinates] = useState([]); // Destructuring values from fetch as you like it
+
   const [currentFrom, setCurrentFrom] = useState({}); // To save the selected option
   const [currentTo, setCurrentTo] = useState({}); // To save the selected option
   const [uiFromIsHidden, setUiFromIsHidden] = useState(true); // this is to hide/Show the UL when typing and clicking
   const [uiToIsHidden, setUiToIsHidden] = useState(true); // this is to hide/Show the UL when typing and clicking
-  const test = new MapboxGeocoder({
-    accessToken: process.env.REACT_APP_MAPBOX_TOKEN,
-    place: fromInput,
-    autocomplete: true,
-  });
 
   const handleChange = (e) => {
     console.log(e);
     switch (e.target.id) {
       case "from":
         setUiFromIsHidden(false);
+        // console.log(e.target.value);
         setFromInput(e.target.value);
+
         break;
       case "to":
         setUiToIsHidden(false);
+        // console.log(e.target.value);
         setToInput(e.target.value);
       default:
         break;
@@ -126,6 +121,7 @@ function Index() {
       )
         .then((res) => res.json())
         .then((data) => {
+          console.log(data.features);
           setApiQueryToToInput(data.features);
         });
   }, [toInput]);
@@ -193,7 +189,12 @@ function Index() {
       </SearchContainer>
       <RadioGroup options={radioButtons} />
 
-      <Map fromInput={fromInput} toInput={toInput} />
+      <Map
+        fromInput={fromInput}
+        toInput={toInput}
+        currentTo={currentTo}
+        currentFrom={currentFrom}
+      />
       <NavLink to="/cars">
         <CarButton label="Välj bil" onClick={() => history.push("/cars")} />
       </NavLink>
