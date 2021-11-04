@@ -10,6 +10,12 @@ const ArrowContainer = styled.div`
   position: absolute;
   top: 15px;
   left: 15px;
+  z-index: 999;
+
+  > svg {
+    color: #478e23;
+    font-size: 2.6rem;
+  }
 `;
 
 const NavStyle = styled.nav`
@@ -67,15 +73,10 @@ function Index({ themetoggler, theme }) {
 
   const style = { color: "#F7F9F8" };
 
-  const aStyle = {
-    color: "#478E23",
-    fontSize: "2.6rem" /* , boxShadow: '1px 0px 1px 3px #478E23' */,
-  }; /* '#dde5b6' */
-
   return (
     <Router>
       <ArrowContainer>
-        <AiOutlineArrowLeft style={aStyle} onClick={() => history.goBack()} />
+        <AiOutlineArrowLeft onClick={() => history.goBack()} />
       </ArrowContainer>
       <NavStyle>
         <ul>

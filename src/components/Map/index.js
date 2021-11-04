@@ -1,77 +1,91 @@
-import React, { useState, useEffect } from "react";
-import ReactMapGL, {
-  Marker,
-  GeolocateControl,
-  FullscreenControl,
-} from "react-map-gl";
+import React, { useRef, useEffect } from "react";
+import mapboxgl from "mapbox-gl";
+import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
 import styled from "styled-components";
-import { AiOutlineCar } from "react-icons/ai";
-import { cars } from "../../data";
-import { getDynamicPosition } from "react-map-gl/src/utils/dynamic-position";
 
 const MapContainer = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 1.4rem;
+
+  .map {
+    height: 25vh;
+    width: 100%;
+  }
+
+  .mapboxgl-control-container {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .mapbox-directions-profile
+    mapbox-directions-component-keyline
+    mapbox-directions-clearfix {
+    display: none;
+  }
+  #mapbox-directions-profile-driving-traffic {
+    display: none;
+  }
+
+  .directions-control-instructions {
+    display: none;
+  }
+
+  .mapboxgl-ctrl-attrib-inner {
+    display: none;
+  }
+  .mapboxgl-ctrl-attrib-button {
+    display: none;
+  }
 `;
 
-function Index({ fromInput, toInput, currentFrom, currentTo }) {
-  const [center, setCenter] = useState({});
-  const [position, setPosition] = useState(center); //fetch urlPlaces för att få fromInput coords och sen setPosition(coords som)
-  const [destination, setDestination] = useState(/*coords till toInput*/); //fetch urlPlaces för att få toInput coords och sen setDestination(coords)
+function Index() {
+  const mapRef = useRef();
 
-  console.log(`currentFrom: ${currentFrom}`, `currentTo : ${currentTo}`);
+  mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
 
-  let [viewport, setViewport] = useState({
-    longitude: 18.01953943483295,
-    latitude: 59.52077559363087,
-    zoom: 8,
-    pitch: 10,
-  });
+  useEffect(() => {
+    let directions = new MapboxDirections({
+      accessToken: mapboxgl.accessToken,
+      unit: "metric",
+      profile: "mapbox/driving",
+    });
 
-  const geolocateControlStyle = {
-    right: 10,
-    top: 10,
-  };
+    let map = new mapboxgl.Map({
+      container: mapRef.current,
+      style: `mapbox://styles/domcobb/ckvjtslv5812e14nz7rs5qjgn`,
+      center: [18.07925962949465, 59.29909073959004],
+      zoom: 8,
+      /* pitch: 50, */
+    });
 
-  const fullscreenControlStyle = {
-    left: 10,
-    top: 10,
-    color: "white",
-  };
+    map.addControl(directions, "top-left");
 
-  const style = {
-    color: "#d00000",
-  };
+    map.on("click", (event) => {
+      // If the user clicked on one of your markers, get its information.
+      const features = map.queryRenderedFeatures(event.point, {
+        layers: ["taxi-sthlm"], // replace with your layer name
+      });
+      if (!features.length) {
+        return;
+      }
+      const feature = features[0];
 
-  // const [showPopup, togglePopup] = React.useState(false);
+      const popup = new mapboxgl.Popup({ offset: [0, -15] })
+        .setLngLat(feature.geometry.coordinates)
+        .setHTML(
+          `<h3>${feature.properties.driver}</h3><p>${feature.properties.type}</p>`
+        )
+        .addTo(map);
+    });
+  }, []);
 
   return (
     <MapContainer>
-      <ReactMapGL
-        {...viewport}
-        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-        onViewportChange={(viewport) => {
-          setViewport(viewport);
-        }}
-        mapStyle={"mapbox://styles/domcobb/ckuqmsu8c5gku17o78a6gnmiq"}
-        width="100vw"
-        height="25vh"
-      >
-        <GeolocateControl
-          style={geolocateControlStyle}
-          positionOptions={{ enableHighAccuracy: true }}
-          trackUserLocation={true}
-          auto
-          onGeolocate={(pos) => {
-            setCenter({ lat: pos.coords.latitude, lon: pos.coords.longitude });
-            /* currentTo, currentFrom */
-          }}
-        />
-
-        <FullscreenControl style={fullscreenControlStyle} />
-      </ReactMapGL>
+      <div ref={mapRef} className="map"></div>
     </MapContainer>
   );
 }

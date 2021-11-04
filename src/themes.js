@@ -23,7 +23,6 @@ export const lightTheme = {
   li: "#081c15",
   a: "#081c15",
   h1: "#081c15",
-  button: "#766153",
   backgroundImage: "linear-gradient(180deg, #adc178, #dde5b6)",
   text: "#081c15",
   input: "#e5e5e5",
@@ -31,6 +30,8 @@ export const lightTheme = {
   /* nav: '#766153', */
   border: "#adc178",
   boxShadow: "#1f2421",
+  nav: "#F7F9F8",
+  slide: "#ddbea9",
 
   /*  form: 'linear-gradient(180deg, #adc178, #dde5b6)', */
 };
@@ -48,6 +49,7 @@ export const darkTheme = {
   nav: "#1f2421",
   border: "#adc178",
   boxShadow: "#F7F9F8",
+  slide: "#F7F9F8",
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -97,14 +99,13 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     button {
-        background-color: ${(props) => props.theme.button};
         color: ${(props) => props.theme.text};
         background-image: ${(props) => props.theme.backgroundImage};
-        
+        background-color: ${(props) => props.theme.button};
     }
 
-   /*  form {
-        background-color: ${(props) => props.theme.form};
-    } */
+   section{
+    background-color: ${(props) => props.theme.slide};
+   }
 
 `;

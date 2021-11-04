@@ -5,12 +5,13 @@ import CarButton from "../../../components/CenterButton";
 import Map from "../../../components/Map";
 import RadioGroup from "../../../components/RadioGroupSearch";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+
 const SearchContainer = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 35%;
+  height: 30%;
 
   > input {
     flex: 0.1;
@@ -66,36 +67,6 @@ const NavLink = styled(Link)`
 
 function Index() {
   const history = useHistory();
-  const [apiQueryToFromInput, setApiQueryToFromInput] = useState([]); // Array fetched from api by the "from input-field"
-  const [apiQueryToToInput, setApiQueryToToInput] = useState([]); // Array fetched from api by the "to input-field"
-  const [fromInput, setFromInput] = useState("");
-  const [toInput, setToInput] = useState("");
-
-  const [currentFrom, setCurrentFrom] = useState({}); // To save the selected option
-  const [currentTo, setCurrentTo] = useState({}); // To save the selected option
-  const [uiFromIsHidden, setUiFromIsHidden] = useState(true); // this is to hide/Show the UL when typing and clicking
-  const [uiToIsHidden, setUiToIsHidden] = useState(true); // this is to hide/Show the UL when typing and clicking
-
-  const handleChange = (e) => {
-    console.log(e);
-    switch (e.target.id) {
-      case "from":
-        setUiFromIsHidden(false);
-        // console.log(e.target.value);
-        setFromInput(e.target.value);
-
-        break;
-      case "to":
-        setUiToIsHidden(false);
-        // console.log(e.target.value);
-        setToInput(e.target.value);
-      default:
-        break;
-    }
-    if (e.target.id == "from") {
-    } else {
-    }
-  };
 
   const radioButtons = [
     { name: "Åka nu", value: "goNow", default: true },
@@ -103,98 +74,14 @@ function Index() {
     { name: "Ankomst", value: "arrival" },
   ];
 
-  useEffect(() => {
-    (fromInput.length > 0) | (fromInput !== "") &&
-      fetch(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${fromInput}.json?country=se&language=sv&autocomplete=true&routing=true&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          setApiQueryToFromInput(data.features);
-        });
-  }, [fromInput]);
-
-  useEffect(() => {
-    (toInput.length > 0) | (toInput !== "") &&
-      fetch(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${toInput}.json?country=se&language=sv&autocomplete=true&routing=true&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data.features);
-          setApiQueryToToInput(data.features);
-        });
-  }, [toInput]);
-
   return (
     <>
-      <SearchContainer>
-        <input
-          type="text"
-          placeholder="Från"
-          id="from"
-          onChange={handleChange}
-        />
-        {apiQueryToFromInput.length > 1 && (
-          <ul style={{ display: `${uiFromIsHidden ? "none" : ""}` }}>
-            {apiQueryToFromInput.map(
-              ({
-                text: name,
-                id,
-                geometry: {
-                  coordinates: { [0]: lat, [1]: long },
-                },
-              }) => (
-                <li
-                  key={id}
-                  id={id}
-                  value={name}
-                  onClick={() => {
-                    setCurrentFrom({ name, id, lat, long });
-                    setUiFromIsHidden(true);
-                  }}
-                >
-                  {name}
-                </li>
-              )
-            )}
-          </ul>
-        )}
-        <input type="text" placeholder="Till" id="to" onChange={handleChange} />
-        {apiQueryToToInput.length > 1 && (
-          <ul style={{ display: `${uiToIsHidden ? "none" : ""}` }}>
-            {apiQueryToToInput.map(
-              ({
-                text: name,
-                id,
-                geometry: {
-                  coordinates: { [0]: lat, [1]: long },
-                },
-              }) => (
-                <li
-                  key={id}
-                  id={id}
-                  value={name}
-                  onClick={() => {
-                    setCurrentTo({ name, id, lat, long });
-                    setUiToIsHidden(true);
-                  }}
-                >
-                  {name}
-                </li>
-              )
-            )}
-          </ul>
-        )}
-      </SearchContainer>
+      <SearchContainer></SearchContainer>
+
       <RadioGroup options={radioButtons} />
 
-      <Map
-        fromInput={fromInput}
-        toInput={toInput}
-        currentTo={currentTo}
-        currentFrom={currentFrom}
-      />
+      <Map />
+
       <NavLink to="/cars">
         <CarButton label="Välj bil" onClick={() => history.push("/cars")} />
       </NavLink>
