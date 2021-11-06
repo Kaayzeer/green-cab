@@ -1,5 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
+/* import "mapbox-gl/dist/mapbox-gl.css"; */
+import "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css";
 import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
 import styled from "styled-components";
 
@@ -12,6 +14,14 @@ const MapContainer = styled.section`
   .map {
     height: 25vh;
     width: 100%;
+  }
+
+  mapboxgl-ctrl-attrib-button {
+    display: none;
+  }
+
+  .mapboxgl-ctrl-logo {
+    display: none;
   }
 
   .mapboxgl-control-container {
@@ -63,7 +73,7 @@ function Index() {
     });
 
     map.addControl(directions, "top-left");
-    map.addControl(new mapboxgl.FullscreenControl());
+    /* map.addControl(new mapboxgl.FullscreenControl()); */
     map.on("click", (event) => {
       // If the user clicked on one of your markers, get its information.
       const features = map.queryRenderedFeatures(event.point, {
@@ -72,14 +82,14 @@ function Index() {
       if (!features.length) {
         return;
       }
-      const feature = features[0];
+      /* const feature = features[0]; */
 
-      const popup = new mapboxgl.Popup({ offset: [0, -15] })
+      /* const popup = new mapboxgl.Popup({ offset: [0, -15] })
         .setLngLat(feature.geometry.coordinates)
         .setHTML(
           `<h3>${feature.properties.driver}</h3><p>${feature.properties.type}</p>`
         )
-        .addTo(map);
+        .addTo(map); */
     });
   }, []);
 

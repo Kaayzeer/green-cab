@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import CarButton from "../../../components/CenterButton";
 import Map from "../../../components/Map";
 import RadioGroup from "../../../components/RadioGroupSearch";
-import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 
 const SearchContainer = styled.form`
   display: flex;
@@ -51,11 +49,6 @@ const SearchContainer = styled.form`
     z-index: 1;
     list-style: none;
   }
-
-  /* > p {
-    margin: 2rem;
-    font-family: "roboto";
-  } */
 `;
 
 const NavLink = styled(Link)`

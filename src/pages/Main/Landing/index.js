@@ -60,7 +60,7 @@ function Index() {
   return (
     <>
       <LandingStyle>
-        <img src={landingImage} />
+        <img src={landingImage} alt="landing-car" />
 
         <UlContainer>
           <p>Nu kan du boka en grön taxi och få 10% rabatt på din resa.</p>

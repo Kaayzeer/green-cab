@@ -1,9 +1,6 @@
 import { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
 import { SliderData } from "../SliderData";
-import ChartButton from "../CenterButton";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
-
 import styled from "styled-components";
 
 const StyledSection = styled.div`
@@ -264,16 +261,9 @@ const StyledSection = styled.div`
   }
 `;
 
-const NavLink = styled(Link)`
-  text-decoration: none;
-  &:visited {
-    text-decoration: none;
-  }
-`;
-
 function Index({ slides }) {
   const [current, setCurrent] = useState(0);
-  const history = useHistory();
+
   const length = slides.length;
 
   const nextSlide = () => {
@@ -285,49 +275,40 @@ function Index({ slides }) {
   };
 
   return (
-    <>
-      <StyledSection>
-        <FaArrowAltCircleLeft className="leftArrow" onClick={prevSlide} />
-        <FaArrowAltCircleRight className="rightArrow" onClick={nextSlide} />
-        <div className="underGlass">
-          <span className="ball"></span>
-          <span className="ballTwo"></span>
-          <span className="ballFront"></span>
-          <span className="ballFrontTwo"></span>
-          <span className="ballFrontThree"></span>
-          <span className="ballFrontFour"></span>
-          <span className="ballFrontFive"></span>
-          <span className="ballFrontSix"></span>
-          <span className="ballFrontSeven"></span>
-          {SliderData.map((slide, i) => {
-            return (
-              <>
-                {i === current && (
-                  <ul
-                    key={slide.id}
-                    className={i === current ? "slide active" : "slide"}
-                  >
-                    <li className="h3">{slide.type}</li>
-                    <li>
-                      <img src={slide.pic} alt="" className="image" />
-                    </li>
-                    <li>{slide.capacity}</li>
-                    <li>{slide.price}</li>
-                  </ul>
-                )}
-              </>
-            );
-          })}
-        </div>
-      </StyledSection>
-
-      <NavLink to="/chart">
-        <ChartButton
-          label="Till varukorgen"
-          onClick={() => history.push("/chart")}
-        />
-      </NavLink>
-    </>
+    <StyledSection>
+      <FaArrowAltCircleLeft className="leftArrow" onClick={prevSlide} />
+      <FaArrowAltCircleRight className="rightArrow" onClick={nextSlide} />
+      <div className="underGlass">
+        <span className="ball"></span>
+        <span className="ballTwo"></span>
+        <span className="ballFront"></span>
+        <span className="ballFrontTwo"></span>
+        <span className="ballFrontThree"></span>
+        <span className="ballFrontFour"></span>
+        <span className="ballFrontFive"></span>
+        <span className="ballFrontSix"></span>
+        <span className="ballFrontSeven"></span>
+        {SliderData.map((slide, i) => {
+          return (
+            <>
+              {i === current && (
+                <ul
+                  key={slide.id}
+                  className={i === current ? "slide active" : "slide"}
+                >
+                  <li className="h3">{slide.type}</li>
+                  <li>
+                    <img src={slide.pic} alt="" className="image" />
+                  </li>
+                  <li>{slide.capacity}</li>
+                  <li>{slide.price}</li>
+                </ul>
+              )}
+            </>
+          );
+        })}
+      </div>
+    </StyledSection>
   );
 }
 
