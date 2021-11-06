@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { SliderData } from "../SliderData";
-import CenterButton from "../CenterButton";
+import ChartButton from "../CenterButton";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
+
 import styled from "styled-components";
-import { lightTheme, darkTheme, GlobalStyles } from "../../themes";
 
 const StyledSection = styled.div`
   display: flex;
@@ -96,6 +97,108 @@ const StyledSection = styled.div`
     animation: moveFront 10s linear infinite;
   }
 
+  .ballFrontTwo {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    z-index: 102;
+    background: linear-gradient(
+      106deg,
+      rgba(201, 250, 125, 0.573546918767507) 1%,
+      rgba(245, 182, 80, 0.5727065826330532) 100%
+    );
+    opacity: 0.8;
+    animation: moveFront 10s linear infinite;
+  }
+
+  .ballFrontThree {
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    z-index: 102;
+    background: linear-gradient(
+      106deg,
+      rgba(155, 250, 125, 0.6643032212885154) 0%,
+      rgba(31, 165, 240, 0.41220238095238093) 100%
+    );
+    opacity: 0.8;
+    animation: moveFront 10s linear infinite;
+  }
+
+  .ballFrontFour {
+    position: absolute;
+    top: 30%;
+    right: 20%;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    z-index: 102;
+    background: linear-gradient(
+      106deg,
+      rgba(155, 250, 125, 0.6643032212885154) 0%,
+      rgba(31, 165, 240, 0.41220238095238093) 100%
+    );
+    opacity: 0.8;
+    animation: moveFront 10s linear infinite;
+  }
+
+  .ballFrontFive {
+    position: absolute;
+    top: 70%;
+    left: 10%;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    z-index: 102;
+    background: linear-gradient(
+      90deg,
+      rgba(131, 58, 180, 1) 0%,
+      rgba(253, 29, 29, 1) 50%,
+      rgba(252, 176, 69, 1) 100%
+    );
+    opacity: 0.8;
+  }
+
+  .ballFrontSix {
+    position: absolute;
+    top: 70%;
+    left: 10%;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    z-index: 102;
+    background: linear-gradient(
+      90deg,
+      rgba(195, 221, 179, 0.8032036613272311) 0%,
+      rgba(231, 212, 224, 1) 50%,
+      rgba(94, 138, 62, 1) 100%
+    );
+    opacity: 0.8;
+  }
+
+  .ballFrontSeven {
+    position: absolute;
+    top: 60%;
+    left: 30%;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    z-index: 102;
+    background: linear-gradient(
+      90deg,
+      rgba(195, 221, 179, 0.8032036613272311) 0%,
+      rgba(231, 212, 224, 1) 50%,
+      rgba(94, 138, 62, 1) 100%
+    );
+    opacity: 0.8;
+  }
+
   @keyframes move {
     20% {
       top: 30%;
@@ -142,7 +245,7 @@ const StyledSection = styled.div`
     }
   }
 
-  section {
+  ul {
     width: 102%;
     height: 102%;
     display: flex;
@@ -150,9 +253,9 @@ const StyledSection = styled.div`
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
-    border: 1px solid rgba(255, 255, 255);
+    border: 1px solid ${(props) => props.theme.body};
     border-radius: 16px;
-
+    list-style-type: none;
     width: 100%;
     height: 100%;
     z-index: 100;
@@ -161,8 +264,16 @@ const StyledSection = styled.div`
   }
 `;
 
+const NavLink = styled(Link)`
+  text-decoration: none;
+  &:visited {
+    text-decoration: none;
+  }
+`;
+
 function Index({ slides }) {
   const [current, setCurrent] = useState(0);
+  const history = useHistory();
   const length = slides.length;
 
   const nextSlide = () => {
@@ -182,25 +293,40 @@ function Index({ slides }) {
           <span className="ball"></span>
           <span className="ballTwo"></span>
           <span className="ballFront"></span>
-          {SliderData.map((slide, i) => (
-            <>
-              {i === current && (
-                <section
-                  key={slide.id}
-                  className={i === current ? "slide active" : "slide"}
-                >
-                  <h3 className="h3">{slide.type}</h3>
-                  <img src={slide.pic} alt="" className="image" />
-                  <h5>{slide.capacity}</h5>
-                  <p>{slide.price}</p>
-                </section>
-              )}
-            </>
-          ))}
+          <span className="ballFrontTwo"></span>
+          <span className="ballFrontThree"></span>
+          <span className="ballFrontFour"></span>
+          <span className="ballFrontFive"></span>
+          <span className="ballFrontSix"></span>
+          <span className="ballFrontSeven"></span>
+          {SliderData.map((slide, i) => {
+            return (
+              <>
+                {i === current && (
+                  <ul
+                    key={slide.id}
+                    className={i === current ? "slide active" : "slide"}
+                  >
+                    <li className="h3">{slide.type}</li>
+                    <li>
+                      <img src={slide.pic} alt="" className="image" />
+                    </li>
+                    <li>{slide.capacity}</li>
+                    <li>{slide.price}</li>
+                  </ul>
+                )}
+              </>
+            );
+          })}
         </div>
       </StyledSection>
 
-      <CenterButton label="Bekräfta bokning" />
+      <NavLink to="/chart">
+        <ChartButton
+          label="Till varukorgen"
+          onClick={() => history.push("/chart")}
+        />
+      </NavLink>
     </>
   );
 }

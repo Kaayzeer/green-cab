@@ -63,7 +63,7 @@ function Index() {
     });
 
     map.addControl(directions, "top-left");
-
+    map.addControl(new mapboxgl.FullscreenControl());
     map.on("click", (event) => {
       // If the user clicked on one of your markers, get its information.
       const features = map.queryRenderedFeatures(event.point, {

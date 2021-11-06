@@ -1,23 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-// export const lightTheme = {
-//     bgPrimary: "#fff",
-//     bgSecondary: "#fff",
-//     color: "#000",
-//     colorDarkBg: "#fff",
-//     themePrimary: "#43456C",
-//     tone: "#7A7A7A",
-//   };
-
-//   export const darkTheme = {
-//     bgPrimary: "#272727",
-//     bgSecondary: "#1a1a1a",
-//     color: "#fff",
-//     colorDarkBg: "#000",
-//     themePrimary: "#B5B8EB",
-//     tone: "#747474",
-//   };
-
 export const lightTheme = {
   body: "#F7F9F8",
   li: "#081c15",
@@ -27,13 +9,10 @@ export const lightTheme = {
   text: "#081c15",
   input: "#e5e5e5",
   label: "#F7F9F8",
-  /* nav: '#766153', */
   border: "#adc178",
   boxShadow: "#1f2421",
   nav: "#F7F9F8",
   slide: "#ddbea9",
-
-  /*  form: 'linear-gradient(180deg, #adc178, #dde5b6)', */
 };
 
 export const darkTheme = {
@@ -74,7 +53,7 @@ export const GlobalStyles = createGlobalStyle`
     nav {
         background-color: ${(props) => props.theme.nav};
         border: ${(props) => props.theme.border};
-        /* box-shadow: ${(props) => props.theme.boxShadow}; */
+
     }
     li {
         color: ${(props) => props.theme.li};
@@ -92,7 +71,7 @@ export const GlobalStyles = createGlobalStyle`
     }
     input {
         background-color: ${(props) => props.theme.input};
-        /* background-image: ${(props) => props.theme.input[1]}; */
+
     }
     label {
         color: ${(props) => props.theme.text};

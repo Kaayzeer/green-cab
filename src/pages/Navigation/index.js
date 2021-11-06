@@ -26,6 +26,7 @@ const NavStyle = styled.nav`
   position: absolute;
   bottom: 0;
   left: 0;
+  z-index: 10;
   border-top-left-radius: 1.6rem;
   border-top-right-radius: 1.6rem;
   border: 1px solid #081c15;
@@ -62,9 +63,6 @@ const ToggleStyle = styled.aside`
   :hover {
     background-color: #55a630;
     opacity: 0.8;
-  }
-
-  :active {
   }
 `;
 

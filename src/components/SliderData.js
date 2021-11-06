@@ -1,7 +1,7 @@
 import standard from "../Images/standardChoiceCar.png";
 import xl from "../Images/XLchoiceCar.png";
 import gold from "../Images/goldChoiceCar.png";
-import uuid from "react-uuid";
+import { v4 as uuidv4 } from "uuid";
 
 export const SliderData = [
   {
@@ -9,7 +9,8 @@ export const SliderData = [
     type: "Standard",
     pic: standard,
     capacity: "Max 4 passagerare",
-    id: 1,
+    about: "100% Elbil",
+    id: uuidv4(),
   },
 
   {
@@ -17,13 +18,15 @@ export const SliderData = [
     type: "Guld",
     pic: gold,
     capacity: "Max 5 passagerare",
-    id: 2,
+    about: "100% Elbil",
+    id: uuidv4(),
   },
   {
     price: "300 kr",
     type: "XL",
     pic: xl,
     capacity: "Max 7 passagerare",
-    id: 3,
+    about: "Hybrid",
+    id: uuidv4(),
   },
 ];
