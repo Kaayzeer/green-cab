@@ -3,6 +3,7 @@ import styled from "styled-components";
 import CarButton from "../../../components/CenterButton";
 import Map from "../../../components/Map";
 import RadioGroup from "../../../components/RadioGroupSearch";
+import { devices } from "../../../components/breakpoints";
 
 const SearchContainer = styled.form`
   display: flex;
@@ -11,43 +12,16 @@ const SearchContainer = styled.form`
   align-items: center;
   height: 30%;
 
-  > input {
-    flex: 0.1;
+  @media ${devices.mobileS} {
+    height: 30%;
+  }
 
-    position: relative;
-    display: inline;
-    width: 15rem;
-    padding: 1.4rem;
-    margin-top: 2rem;
-    border: none;
-    outline: none;
-    border-radius: 1rem;
+  @media ${devices.mobileM} {
+    height: 30%;
   }
-  ul {
-    flex: 0.1;
-    position: absolute;
-    z-index: 99;
-    top: 50%;
-    margin: auto;
-    height: auto;
-    width: 240px;
-    background: white;
-    border: 1px solid black;
-    z-index: 1;
-    list-style: none;
-  }
-  #to-ul {
-    flex: 0.1;
-    position: absolute;
-    z-index: 99;
-    top: 50%;
-    margin: auto;
-    height: auto;
-    width: 240px;
-    background: white;
-    border: 1px solid black;
-    z-index: 1;
-    list-style: none;
+
+  @media ${devices.laptopL} {
+    height: 25%;
   }
 `;
 

@@ -27,7 +27,7 @@ export const darkTheme = {
   label: "#F7F9F8",
   nav: "#1f2421",
   border: "#adc178",
-  boxShadow: "#F7F9F8",
+  boxShadow: "#687D5A",
   slide: "#F7F9F8",
 };
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { SliderData } from "../SliderData";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 import styled from "styled-components";
+import { devices } from "../../components/breakpoints";
 
 const StyledSection = styled.div`
   display: flex;
@@ -21,6 +22,14 @@ const StyledSection = styled.div`
 
     &:hover {
       font-size: 2rem;
+
+      @media ${devices.mobileS} {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media ${devices.mobileL} {
+      font-size: 2rem;
     }
   }
 
@@ -32,6 +41,14 @@ const StyledSection = styled.div`
     z-index: 103;
 
     &:hover {
+      font-size: 2rem;
+
+      @media ${devices.mobileS} {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media ${devices.mobileL} {
       font-size: 2rem;
     }
   }
@@ -258,6 +275,69 @@ const StyledSection = styled.div`
     z-index: 100;
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(7px);
+
+    li {
+      font-family: "cantarell";
+    }
+
+    li:nth-child(1) {
+      letter-spacing: 0.08rem;
+
+      @media ${devices.mobileS} {
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
+
+      @media ${devices.mobileL} {
+        font-weight: bold;
+        font-size: 2.2rem;
+        letter-spacing: 0.2rem;
+      }
+      @media ${devices.laptop} {
+        font-weight: bold;
+        font-size: 2.5rem;
+        letter-spacing: 0.2rem;
+      }
+    }
+
+    li:nth-child(2) img {
+      @media ${devices.mobileL} {
+        width: 300px;
+      }
+      @media ${devices.tablet} {
+        width: 320px;
+      }
+      @media ${devices.laptop} {
+        width: 350px;
+      }
+    }
+
+    li:nth-child(3) {
+      @media ${devices.mobileS} {
+        font-size: 1rem;
+      }
+      @media ${devices.mobileL} {
+        font-size: 1.6rem;
+      }
+      @media ${devices.tablet} {
+        font-size: 1.8rem;
+      }
+      @media ${devices.laptop} {
+        font-size: 2rem;
+      }
+    }
+
+    li:nth-child(4) {
+      @media ${devices.mobileL} {
+        font-size: 1.6rem;
+      }
+      @media ${devices.tablet} {
+        font-size: 1.8rem;
+      }
+      @media ${devices.laptop} {
+        font-size: 2rem;
+      }
+    }
   }
 `;
 

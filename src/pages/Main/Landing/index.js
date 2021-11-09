@@ -3,36 +3,30 @@ import { Link, useHistory } from "react-router-dom";
 import landingImage from "../../../Images/greencablogo.png";
 import CenterButton from "../../../components/CenterButton";
 import styled from "styled-components";
+import { devices } from "../../../components/breakpoints";
 
 const LandingStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  height: 100%;
 `;
 
-const UlContainer = styled.div`
+const PContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
   height: 50vh;
 
-  > ul {
-    padding: 0 1.4rem;
-
-    > li {
-      list-style: none;
-      font-size: 1.2rem;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-  }
   > p {
     padding: 1.6rem;
     text-align: center;
+
+    @media ${devices.tablet} {
+      font-size: 1.3rem;
+    }
   }
 
   > button {
@@ -62,7 +56,7 @@ function Index() {
       <LandingStyle>
         <img src={landingImage} alt="landing-car" />
 
-        <UlContainer>
+        <PContainer>
           <p>Nu kan du boka en grön taxi och få 10% rabatt på din resa.</p>
 
           <ButtonContainer>
@@ -73,7 +67,7 @@ function Index() {
               />
             </NavLink>
           </ButtonContainer>
-        </UlContainer>
+        </PContainer>
       </LandingStyle>
     </>
   );

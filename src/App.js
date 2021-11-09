@@ -7,10 +7,11 @@ import { lightTheme, darkTheme, GlobalStyles } from "./themes";
 
 const StyledApp = styled.div`
   position: relative;
-  width: 375px;
-  height: 812px;
+  width: 100vw;
+  height: 100vh;
+  max-width: 1024px;
+  max-height: 1366px;
   margin: 0 auto;
-  padding: 0;
 `;
 
 function App() {

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import BackgroundImage from "../../../Images/chartBackground.png";
 import BookingButton from "../../../components/CenterButton";
 import goldChoiceCar from "../../../Images/goldChoiceWBack.png";
+import { devices } from "../../../components/breakpoints";
 
 const StyledChart = styled.section`
   height: 100vh;
@@ -33,12 +34,85 @@ const StyledChart = styled.section`
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(9px);
     padding: 2.4rem;
+
+    @media ${devices.laptop} {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(12px);
+    }
+  }
+
+  h3 {
+    @media ${devices.mobileS} {
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
+      padding: 0.2rem;
+    }
+    @media ${devices.mobileM} {
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+      padding: 0.4rem;
+    }
+    @media ${devices.tablet} {
+      font-size: 1.4rem;
+      letter-spacing: 0.1rem;
+      margin-bottom: 0.8rem;
+      padding: 0.4rem;
+    }
+    @media ${devices.laptop} {
+      font-size: 1.6rem;
+      font-size: 2rem;
+      letter-spacing: 0.1rem;
+      margin-bottom: 0.8rem;
+      padding: 0.4rem;
+    }
+  }
+
+  img {
+    @media ${devices.tablet} {
+      width: 280px;
+    }
+    @media ${devices.laptop} {
+      width: 300px;
+    }
   }
 
   ul {
     list-style-type: none;
-    font-weight: bold;
-    margin: 0rem 0rem;
+    letter-spacing: 0.1rem;
+
+    li {
+      color: #081c15;
+      font-family: "Cantarell";
+    }
+
+    li {
+      @media ${devices.mobileS} {
+        margin: 0.4rem 0rem;
+      }
+      @media ${devices.mobileM} {
+        margin: 0.7rem 0rem;
+      }
+    }
+
+    li:nth-child(1) {
+      @media ${devices.mobileS} {
+        margin-top: 0.2rem;
+        letter-spacing: 0.04rem;
+        font-size: 0.8rem;
+      }
+      @media ${devices.mobileM} {
+        letter-spacing: 0.12rem;
+        font-size: 1rem;
+      }
+      @media ${devices.tablet} {
+        letter-spacing: 0.15rem;
+        font-size: 1.2rem;
+      }
+      @media ${devices.laptop} {
+        letter-spacing: 0.18rem;
+        font-size: 1.6rem;
+      }
+    }
   }
 `;
 

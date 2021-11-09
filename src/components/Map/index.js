@@ -4,12 +4,30 @@ import mapboxgl from "mapbox-gl";
 import "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css";
 import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
 import styled from "styled-components";
+import { devices } from "../breakpoints";
 
 const MapContainer = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 1.4rem;
+  margin-bottom: 1.4rem;
+  width: 100%;
+
+  @media ${devices.mobileS} {
+    margin-bottom: 0.5rem;
+  }
+
+  @media ${devices.mobileM} {
+    margin-bottom: 1.4rem;
+  }
+
+  @media ${devices.tablet} {
+    margin-top: 7%;
+  }
+  @media ${devices.laptop} {
+    margin-top: 10%;
+  }
 
   .map {
     height: 25vh;
@@ -26,7 +44,7 @@ const MapContainer = styled.section`
 
   .mapboxgl-control-container {
     position: fixed;
-    top: 10%;
+    top: 12%;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -48,6 +66,9 @@ const MapContainer = styled.section`
     display: none;
   }
   .mapboxgl-ctrl-attrib-button {
+    display: none;
+  }
+  .mapbox-directions-clearfix {
     display: none;
   }
 `;

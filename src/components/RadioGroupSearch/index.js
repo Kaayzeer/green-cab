@@ -3,6 +3,7 @@ import styled from "styled-components";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import sv from "date-fns/locale/sv";
+import { devices } from "../../components/breakpoints";
 
 const RadioContainer = styled.form`
   position: relative;
@@ -26,6 +27,10 @@ const RadioContainer = styled.form`
     text-align: center;
     font-family: "ubuntu";
 
+    @media ${devices.laptop} {
+      font-size: 1.2rem;
+    }
+
     &:hover {
       opacity: 0.9;
     }
@@ -42,6 +47,12 @@ const RadioContainer = styled.form`
     opacity: 0.7;
     z-index: 1;
     transition: all 0.3s linear;
+    border: 1px solid ${(props) => props.theme.boxShadow};
+    box-shadow: 1px 5px 2px -3px ${(props) => props.theme.boxShadow};
+
+    @media ${devices.laptop} {
+      height: 2.4rem;
+    }
   }
 `;
 
@@ -54,12 +65,27 @@ const DateContainer = styled.div`
     align-items: center;
     margin-top: 0.6rem;
 
+    @media ${devices.laptop} {
+      margin-top: 1.2rem;
+    }
+
     & input {
-      border: none;
+      border: 1px solid ${(props) => props.theme.boxShadow};
       height: 3.6rem;
       width: 50%;
       text-align: center;
       letter-spacing: 0.1rem;
+      font-family: "ubuntu";
+
+      @media ${devices.tablet} {
+        height: 4rem;
+        font-size: 1.2rem;
+      }
+
+      @media ${devices.laptop} {
+        height: 6rem;
+        font-size: 1.4rem;
+      }
     }
   }
 `;

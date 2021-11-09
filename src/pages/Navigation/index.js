@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { devices } from "../../components/breakpoints";
 import { FiSearch, FiSun, FiMoon } from "react-icons/fi";
 import { IoCarSportOutline } from "react-icons/io5";
 import { AiOutlineArrowLeft } from "react-icons/ai";
-
 import { BrowserRouter as Router, Link, useHistory } from "react-router-dom";
 
 const ArrowContainer = styled.div`
@@ -15,12 +15,27 @@ const ArrowContainer = styled.div`
   > svg {
     color: #478e23;
     font-size: 2.6rem;
+
+    @media ${devices.mobileS} {
+      font-size: 1.8rem;
+    }
+
+    @media ${devices.mobileM} {
+      font-size: 2rem;
+    }
+
+    @media ${devices.mobileL} {
+      font-size: 3rem;
+    }
+    @media ${devices.laptop} {
+      font-size: 4.5rem;
+    }
   }
 `;
 
 const NavStyle = styled.nav`
   width: 100%;
-  height: 10vh;
+  height: 10%;
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -40,10 +55,18 @@ const NavStyle = styled.nav`
     justify-content: space-between;
     margin: 0;
     padding: 0 1.4rem;
+    list-style: none;
 
     > li {
-      list-style: none;
       font-size: 1.6rem;
+      list-style: none;
+
+      @media ${devices.mobileL} {
+        font-size: 2.5rem;
+      }
+      @media ${devices.laptop} {
+        font-size: 3.5rem;
+      }
       &:hover {
         color: #252d20a9;
         cursor: pointer;
@@ -64,12 +87,21 @@ const ToggleStyle = styled.aside`
     background-color: #55a630;
     opacity: 0.8;
   }
+
+  > svg {
+    color: ${(props) => props.theme.li};
+
+    @media ${devices.mobileL} {
+      font-size: 2.5rem;
+    }
+    @media ${devices.laptop} {
+      font-size: 3.5rem;
+    }
+  }
 `;
 
 function Index({ themetoggler, theme }) {
   const history = useHistory();
-
-  const style = { color: "#F7F9F8" };
 
   return (
     <Router>
@@ -94,7 +126,7 @@ function Index({ themetoggler, theme }) {
             {theme === "light" ? (
               <FiMoon onClick={() => themetoggler()} />
             ) : (
-              <FiSun style={style} onClick={() => themetoggler()} />
+              <FiSun onClick={() => themetoggler()} />
             )}
           </ToggleStyle>
         </ul>
