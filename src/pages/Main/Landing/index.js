@@ -23,6 +23,7 @@ const PContainer = styled.div`
   > p {
     padding: 1.6rem;
     text-align: center;
+    font-family: "Helvetica Neue";
 
     @media ${devices.tablet} {
       font-size: 1.3rem;
