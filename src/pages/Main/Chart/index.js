@@ -148,7 +148,7 @@ function Index() {
           </ul>
         ))}
       </div>
-      <NavLink to="/chart">
+      <NavLink to="/booking">
         <BookingButton
           label="Bekräfta bokning"
           onClick={() => history.push("/booking")}

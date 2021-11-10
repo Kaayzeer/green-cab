@@ -271,7 +271,7 @@ export const StyledSection = styled.div`
     height: 100%;
     z-index: 100;
     background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(7px);
+    backdrop-filter: blur(9px);
 
     li {
       font-family: "cantarell";
