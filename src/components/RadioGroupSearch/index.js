@@ -12,8 +12,9 @@ const RadioContainer = styled.form`
   justify-content: space-around;
   align-items: center;
   border-radius: 1rem;
-  height: 5vh;
-  background: transparent;
+  height: 8vh;
+  background: ${(props) => props.theme.body};
+  z-index: 1001;
 
   & > * input {
     visibility: hidden;
@@ -44,7 +45,7 @@ const RadioContainer = styled.form`
     padding: 0.3rem;
     border-radius: 1rem;
     letter-spacing: 0.1rem;
-    opacity: 0.7;
+    /* opacity: 0.7; */
     z-index: 1;
     transition: all 0.3s linear;
     border: 1px solid ${(props) => props.theme.boxShadow};

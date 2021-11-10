@@ -3,10 +3,11 @@ import xl from "../Images/XLchoiceCar.png";
 import gold from "../Images/goldChoiceCar.png";
 import { v4 as uuidv4 } from "uuid";
 
-export const SliderData = [
+export const CarChoiceData = [
   {
-    baby: "Bilbarnstol",
-    animals: "Husdjur",
+    wheelchair: "Rullstol ",
+    baby: "Bilbarnstol  ",
+    animals: "Husdjur     ",
     price: "200 kr",
     type: "Standard",
     pic: standard,
@@ -16,8 +17,9 @@ export const SliderData = [
   },
 
   {
-    baby: "Bilbarnstol",
-    animals: "Husdjur",
+    wheelchair: "Rullstol ",
+    baby: "Bilbarnstol  ",
+    animals: "Husdjur     ",
     price: "400 kr",
     type: "Guld",
     pic: gold,
@@ -26,8 +28,9 @@ export const SliderData = [
     id: uuidv4(),
   },
   {
-    baby: "Bilbarnstol",
-    animals: "Husdjur",
+    wheelchair: "Rullstol ",
+    baby: "Bilbarnstol  ",
+    animals: "Husdjur     ",
     price: "300 kr",
     type: "XL",
     pic: xl,

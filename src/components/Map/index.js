@@ -44,7 +44,7 @@ const MapContainer = styled.section`
 
   .mapboxgl-control-container {
     position: fixed;
-    top: 12%;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%);
   }

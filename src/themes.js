@@ -39,6 +39,12 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     body{
+        position: relative;
+  width: 100vw;
+  height: 100vh;
+  max-width: 1024px;
+  max-height: 1366px;
+  margin: 0 auto;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
         "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
         sans-serif;
