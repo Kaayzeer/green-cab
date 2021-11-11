@@ -22,7 +22,7 @@ function Main() {
         <Route path="/search">
           <Search />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <Landing />
         </Route>
       </Switch>
