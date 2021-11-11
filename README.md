@@ -40,7 +40,6 @@
 ### Built With
 
 - [React](https://reactjs.org/)
-- [Firebase](https://firebase.google.com/docs/guides)
 - [styled-components](https://styled-components.com/)
 - [React-router-dom](https://reactrouter.com/web/guides/quick-start)
 
