@@ -32,7 +32,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -b master -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -57,7 +57,7 @@
     ]
   },
   "devDependencies": {
-    "homepage": "http://kayzersozee.github.io/green-cab",
-    "gh-pages": "^3.2.3"
+    "gh-pages": "^3.2.3",
+    "homepage": "http://kayzersozee.github.io/green-cab"
   }
 }
