@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { CarChoiceData } from "../CarChoiceData";
 import ReactDOM from "react-dom";
+import React from "react";
 
 const ModalBackDrop = styled.div`
   position: absolute;
@@ -17,7 +18,9 @@ const ModalBackDrop = styled.div`
 
   button {
     position: absolute;
-    bottom: 9rem;
+    bottom: 2rem;
+    left: 50%;
+    transform: translate(-50%);
     width: 108px;
     height: 45px;
     letter-spacing: 0.08rem;
@@ -78,35 +81,56 @@ const Modal = styled.div`
   }
 `;
 
-function Index({ handleClose }) {
+function Index({ handleClose, handleChange }) {
   return ReactDOM.createPortal(
     <ModalBackDrop>
       <Modal>
-        <form>
-          {CarChoiceData.map((data) => (
-            <>
+        <form onSubmit={handleClose}>
+          {CarChoiceData.map((data, i) => (
+            <React.Fragment key={data.id}>
               <div className="img">
                 <img src={data.pic} alt=""></img>
               </div>
               <div className="input">
-                <label for="animals">
+                <label htmlFor="animals">
                   {data.animals}
-                  <input type="checkbox" id="animals" name="animals" />
+                  <input
+                    className={i}
+                    onChange={handleChange}
+                    type="checkbox"
+                    id="animals"
+                    name="animals"
+                  />
                 </label>
-                <label for="wheelchair">
+                <label htmlFor="wheelchair">
                   {data.wheelchair}
-                  <input type="checkbox" id="wheelchair" name="wheelchair" />
+                  <input
+                    className={i}
+                    onChange={handleChange}
+                    type="checkbox"
+                    id="wheelchair"
+                    name="wheelchair"
+                  />
                 </label>
-                <label for="baby">
+                <label htmlFor="baby">
                   {data.baby}
-                  <input type="checkbox" id="baby" name="baby" />
+                  <input
+                    className={i}
+                    onChange={handleChange}
+                    type="checkbox"
+                    id="baby"
+                    name="baby"
+                  />
                 </label>
               </div>
-            </>
+            </React.Fragment>
           ))}
+
+          <button className="closeButton" type="submit">
+            Spara
+          </button>
         </form>
       </Modal>
-      <button onClick={handleClose}>Välj</button>
     </ModalBackDrop>,
     document.body
   );

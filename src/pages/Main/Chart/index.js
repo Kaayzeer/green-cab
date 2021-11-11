@@ -3,8 +3,9 @@ import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import BackgroundImage from "../../../Images/chartBackground.png";
 import BookingButton from "../../../components/CenterButton";
-import goldChoiceCar from "../../../Images/goldChoiceWBack.png";
+
 import { devices } from "../../../components/breakpoints";
+import { useLocalStorage } from "../../../components/localStorage";
 
 const StyledChart = styled.section`
   height: 100vh;
@@ -129,10 +130,16 @@ const NavLink = styled(Link)`
 
 function Index() {
   const history = useHistory();
+  const [getExtras, setGetExtras] = useLocalStorage("extras", "car");
+
+  console.log(getExtras);
 
   const chartInfo = [
     "Extra:",
-    "1 Bilbarnstol, husddjur",
+    `1 ${getExtras.baby ? "Bilbarnstol" : ""}, ${
+      getExtras.animals ? "Husdjur" : ""
+    }${getExtras.wheelchair ? "Rullstol" : ""}`,
+
     "Rabatt 10%",
     "Totalt: 360 kr",
   ];
@@ -141,7 +148,7 @@ function Index() {
     <StyledChart>
       <div className="chart">
         <h3>Du har valt guldpaketet!</h3>
-        <img src={goldChoiceCar} alt="chartPic" />
+        <img src={getExtras.car} alt="chartPic" />
         {chartInfo.map((info, i) => (
           <ul key={i}>
             <li>{info}</li>

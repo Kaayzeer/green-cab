@@ -1,12 +1,17 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { SliderData } from "../SliderData";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 import { StyledSection } from "./sliderCss";
 import CarChoices from "../CarChoices";
+import standardChoiceCar from "../../Images/standardChoiceCar.png";
+import goldChoiceCar from "../../Images/goldChoiceCar.png";
+import XLChoiceCar from "../../Images/XLchoiceCar.png";
+import { useLocalStorage } from "../localStorage";
 
 function Index({ slides }) {
   const [current, setCurrent] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [saveExtras, setSaveExtras] = useLocalStorage("extras", "");
 
   const length = slides.length;
 
@@ -18,7 +23,32 @@ function Index({ slides }) {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
 
-  const handleClose = () => {
+  const handleChange = (e) => {
+    console.log(e.target.className);
+    if (e.target.className == 0) {
+      setSaveExtras({
+        ...saveExtras,
+        [e.target.name]: e.target.checked,
+        car: standardChoiceCar,
+      });
+    } else if (e.target.className == 1) {
+      setSaveExtras({
+        ...saveExtras,
+        [e.target.name]: e.target.checked,
+        car: goldChoiceCar,
+      });
+    } else {
+      setSaveExtras({
+        ...saveExtras,
+        [e.target.name]: e.target.checked,
+        car: XLChoiceCar,
+      });
+    }
+  };
+
+  const handleClose = (e) => {
+    console.log(e.target.value);
+    e.preventDefault();
     setShowModal(false);
   };
 
@@ -39,12 +69,9 @@ function Index({ slides }) {
           <span className="ballFrontSeven"></span>
           {SliderData.map((slide, i) => {
             return (
-              <>
+              <React.Fragment key={slide.id}>
                 {i === current && (
-                  <ul
-                    key={slide.id}
-                    className={i === current ? "slide active" : "slide"}
-                  >
+                  <ul className={i === current ? "slide active" : "slide"}>
                     <li className="h3">{slide.type}</li>
                     <li>
                       <img src={slide.pic} alt="" className="image" />
@@ -53,11 +80,17 @@ function Index({ slides }) {
                     <li>{slide.price}</li>
                   </ul>
                 )}
-              </>
+              </React.Fragment>
             );
           })}
         </div>
-        {showModal && <CarChoices handleClose={handleClose} />}
+        {showModal && (
+          <CarChoices
+            saveExtras={saveExtras}
+            handleClose={handleClose}
+            handleChange={handleChange}
+          />
+        )}
         <button onClick={() => setShowModal(true)}>Tillval</button>
       </StyledSection>
     </>
