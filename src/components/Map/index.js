@@ -26,7 +26,7 @@ const MapContainer = styled.section`
     margin-top: 7%;
   }
   @media ${devices.laptop} {
-    margin-top: 10%;
+    margin-top: 5%;
   }
 
   .map {

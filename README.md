@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <p>
-    <img src="src/images/readme.gif" alt="Logo" width="100" height="">
+    <img src="./readme.gif" alt="Logo" width="100" height="">
   </p>
 
   <h1 align="center">Green-Car Sustinable car choices</h1>
@@ -64,7 +64,7 @@ To setup this project locally you may follow the installation steps below.
 
 ## Usage
 
-_For demonstration - [Green-cab]()_
+_For demonstration - [Green-cab](green-cab.surge.sh)_
 
 ## Contact
 

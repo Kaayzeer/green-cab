@@ -14,6 +14,7 @@ const CarButtonContainer = styled.div`
     margin-top: 10px;
     width: 216px;
     height: 45px;
+
     border-radius: 35px;
     letter-spacing: 1px;
     font-size: 1rem;

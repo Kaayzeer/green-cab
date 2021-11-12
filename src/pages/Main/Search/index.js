@@ -23,6 +23,10 @@ const SearchContainer = styled.form`
   @media ${devices.laptopL} {
     height: 25%;
   }
+
+  @media ${devices.laptop} {
+    height: 22%;
+  }
 `;
 
 const NavLink = styled(Link)`
