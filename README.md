@@ -64,7 +64,7 @@ To setup this project locally you may follow the installation steps below.
 
 ## Usage
 
-_For demonstration - [Green-cab](green-cab.surge.sh)_
+_For demonstration - [Green-cab](https://green-cab.surge.sh)_
 
 ## Contact
 
