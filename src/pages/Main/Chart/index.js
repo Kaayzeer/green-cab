@@ -12,9 +12,9 @@ function Index() {
 
   const chartInfo = [
     "Extra:",
-    `1 ${getExtras.baby ? "Bilbarnstol" : ""},
-    ${getExtras.animals ? "Husdjur" : ""}
-    ${getExtras.wheelchair ? "Rullstol" : ""}`,
+    `${getExtras.baby ? " 1 Bilbarnstol," : ""}
+    ${getExtras.animals ? "1 Husdjur," : ""}
+    ${getExtras.wheelchair ? "1 Rullstol." : ""}`,
 
     "Rabatt 10%",
     "Totalt: 360 kr",
