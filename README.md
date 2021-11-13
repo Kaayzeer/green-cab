@@ -24,24 +24,41 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
+----
 <br />
 
 ## About The Project
 
 <p align="justify">
-  This is a Taxi-app created for a school-project who´s purpose is to emulate a prototype designed in Figma for a UX course. For the navigaton sytem I used Mapbox and the app uses localstorage for saving and retreiving data. After working with the project for a while I realized that the Mapbox css didn´t compat with React very well. 
-  </a>
+This application is a schoolproject from KYH Stockholm frontend developer 2020 class. 
+We started creating a prototype (mvp) in groups using Figma and implemented the UX design individually. I used React for my building.
 </p>
+</br>
+
+---
+
+</br>
+
+Figma Prototype - [https://www.figma.com/proto/zoafAjyjN8TGlHJ7hPRVMB/H%C3%A5llbart-Resande-Grupp-4-team-library?page-id=0%3A1&node-id=452%3A225&starting-point-node-id=312%3A6](https://www.figma.com/proto/zoafAjyjN8TGlHJ7hPRVMB/H%C3%A5llbart-Resande-Grupp-4-team-library?page-id=0%3A1&node-id=452%3A225&starting-point-node-id=312%3A6)
+
+</br>
+
+<p align="justify">
+The projects nisch was sustainable travelling. So we started with interviews to gather information from potential users. This gave us valuable tips for how to build the prototype into a minimal valuable product. The next step was to have test persons for our project and afterwards do some final touches before the presentation.
+</p>
+</br>
+
+---
 
 ### Built With
 
-- [React](https://reactjs.org/)
-- [styled-components](https://styled-components.com/)
-- [React-router-dom](https://reactrouter.com/web/guides/quick-start)
+- [React]
+- [styled-components]
+- [React-router-dom]
+- [Mapbox]
 
 ## Getting Started
 
@@ -62,10 +79,6 @@ To setup this project locally you may follow the installation steps below.
    npm install
    ```
 
-## Usage
-
-_For demonstration - [Green-cab](https://green-cab.surge.sh)_
-
 ## Contact
 
 **Author**
@@ -73,3 +86,5 @@ _For demonstration - [Green-cab](https://green-cab.surge.sh)_
 - [Nikolas Rosinelli](https://github.com/kayzersozee)
 
 Project Link: [https://github.com/kayzersozee/green-cab](https://github.com/kayzersozee/green-cab)
+
+Demo - [https://green-cab.surge.sh/](https://green-cab.surge.sh/)
